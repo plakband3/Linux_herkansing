@@ -1,7 +1,7 @@
-install munin master:
-https://www.linuxhelp.com/how-to-install-munin-in-ubuntu
+#install munin master:
+#https://www.linuxhelp.com/how-to-install-munin-in-ubuntu
 
-in nieuw /etc/munin/apache24.conf
+#in nieuw /etc/munin/apache24.conf
 
 Alias /munin /var/cache/munin/www
 <Directory /var/cache/munin/www>
