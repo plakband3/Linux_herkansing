@@ -1,0 +1,31 @@
+syslog gaan verzamelen
+https://computingforgeeks.com/how-to-configure-rsyslog-centralized-log-server-on-ubuntu-18-04-lts/
+
+zowel master als client worden beschreven
+
+sudo apt-get install rsyslog
+sudo systemctl status rsyslog 
+
+
+
+op de minion:
+sudo nano /etc/rsyslog.conf
+
+$IncludeConfig /etc/rsyslog.d/*.conf
+
+#$PreserveFQDN on
+
+*.* @52.233.160.168:514
+#*.* @fqdn-of-rsysog-server:514
+
+*.* @@52.233.160.168:514
+#*.* ##fqdn-of-rsysog-server:514
+
+# onthoud waar je bent gebleven, mocht de minion opnieuw opstarten
+
+$ActionQueueFileName queue
+$ActionQueueMaxDiskSpace 1g
+$ActionQueueSaveOnShutdown on
+$ActionQueueType LinkedList
+$ActionResumeRetryCount -1
+
