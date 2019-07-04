@@ -1,0 +1,51 @@
+install munin master:
+https://www.linuxhelp.com/how-to-install-munin-in-ubuntu
+
+in nieuw /etc/munin/apache24.conf
+
+Alias /munin /var/cache/munin/www
+<Directory /var/cache/munin/www>
+ # Require local
+ Require all granted
+ Options FollowSymLinks SymLinksIfOwnerMatch
+ Options None
+</Directory>
+ScriptAlias /munin-cgi/munin-cgi-graph /usr/lib/munin/cgi/munin-cgi-graph
+<Location /munin-cgi/munin-cgi-graph>
+ # Require local
+ Require all granted
+ Options FollowSymLinks SymLinksIfOwnerMatch
+ <IfModule mod_fcgid.c>
+ SetHandler fcgid-script
+ </IfModule>
+ <IfModule !mod_fcgid.c>
+ SetHandler cgi-script
+ </IfModule>
+</Location>
+
+---
+node / minion
+https://www.digitalocean.com/community/tutorials/how-to-install-the-munin-monitoring-tool-on-ubuntu-14-04
+
+    sudo apt-get update
+    sudo apt-get install -y munin-node
+
+sudo nano /etc/munin/munin-node.conf
+
+
++[label Ubuntu-minion1] # geeft leipe errors waardoor de service munin-node niet is te starten
++allow ^52\.233\.160\.168$
+-allow ^127\.0\.0\.1$
+=allow ^::1$
++ port 4949
+
+sudo service munin-node restart
+
+OP DE MASTER:
+sudo nano /etc/munin/munin.conf
+
+add: 
+[MuninNode]
+    address {node/minion-ip-address}
+    use_node_name yes
+	
