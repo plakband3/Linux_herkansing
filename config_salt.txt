@@ -1,0 +1,62 @@
+# SALTINSTALLATION
+# https://computingforgeeks.com/how-to-install-salt-saltstack-master-minion-on-ubuntu-18-04-lts/
+
+# on the master:
+
+wget -O - https://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
+
+#add repo
+echo "deb http://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest bionic main" | sudo tee /etc/apt/sources.list.d/saltstack.list
+
+#update system packet list and install salt
+sudo apt -y install salt-api salt-cloud salt-master salt-minion salt-ssh salt-syndic
+
+#firewall reasons
+sudo ufw allow proto tcp from any to any port 4505,4506
+
+
+#configuring salt
+#The default Salt Master configuration /etc/salt/master should work for most installations. For Minions, the only requirement for getting started is to set the location of the master in the minion configuration file /etc/salt/minion
+
+# on the minion:
+sudo wget -O - https://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
+
+#add repo
+sudo echo "deb http://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest bionic main" | sudo tee /etc/apt/sources.list.d/saltstack.list
+
+#install salt 
+sudo apt install salt-minion
+
+# still on the minion:
+sudo nano /etc/hosts
++10.0.0.4 salt
+
+# op de master: om key eruit te halen
+sudo salt-key -F master
+
+# op de minion
+sudo nano /etc/salt/minion
++ master_finger: ' {master_key} ' 
+
+#daarna
+sudo systemctl restart salt-minion
+
+# kijk naar sleutels op master:
+sudo salt-key -L
+
+# en accepteer 
+sudo salt-key --accept='{hostname minion}'
+
+# test communicatie tussen master&minion
+sudo salt {hostname minion} test.ping
+sudo salt '*' test.ping
+
+
+
+
+
+
+
+
+
+
