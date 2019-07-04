@@ -1,0 +1,27 @@
+verzameling info
+
+-------------------
+Docker & kubernetes
+-------------------
+Kubernetes node list
+~$sudo kubectl get nodes
+
+$HOME/.kube/config  	#kube config
+
+
+----------------
+Munin monitoring
+----------------
+
+
+---------
+SaltStack
+---------
+
+
+-------
+RSyslog
+-------
+# bekijk logs op de master op volgende locatie:
+# /var/log/saved_logs.log
+
