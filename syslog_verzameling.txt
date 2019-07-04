@@ -26,9 +26,10 @@ sudo nano /etc/rsyslog.conf
 +input(type="imtcp" port="514")
 
 
-$template remote-incoming-logs,"/var/log/%HOSTNAME%/%PROGRAMNAME%.log" 
-*.* ?remote-incoming-logs
-& ~
+# zie /etc/rsyslog.conf  voor juiste versie/manier
+#$template remote-incoming-logs,"/var/log/%HOSTNAME%/%PROGRAMNAME%.log" 
+#*.* ?remote-incoming-logs
+#& ~
 
 #$PreserveFQDN on
 
@@ -47,7 +48,7 @@ $ActionQueueType LinkedList
 $ActionResumeRetryCount -1
 
 # bekijk logs op de master op volgende locatie:
-# /var/log/
+# /var/log/saved_logs.log
 
 
 

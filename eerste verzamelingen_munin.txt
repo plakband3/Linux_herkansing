@@ -33,8 +33,8 @@ sudo apt-get install -y munin-node
 sudo nano /etc/munin/munin-node.conf
 
 
-+[label Ubuntu-minion1] # geeft leipe errors waardoor de service munin-node niet is te starten
-+allow ^52\.233\.160\.168$
+-[label Ubuntu-minion1] # geeft leipe errors waardoor de service munin-node niet is te starten
++allow ^52\.233\.160\.168$ # LET OP WANNEER MASTER IP ANDERS IS
 -allow ^127\.0\.0\.1$
 =allow ^::1$
 + port 4949
@@ -48,6 +48,8 @@ add:
 [MuninNode]
     address {node/minion-ip-address}
     use_node_name yes
+
+
 
 
 # ------------
@@ -241,7 +243,7 @@ includedir /etc/munin/munin-conf.d
     use_node_name yes
 
 [Ubuntu-Minion1]
-    address 13.69.75.111
+    address 13.69.75.111		#Ook hier een ip dat kan veranderen
     use_node_name yes
 
 #

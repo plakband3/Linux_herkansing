@@ -17,7 +17,11 @@ Munin monitoring
 ---------
 SaltStack
 ---------
+# kijk naar sleutels op master:
+sudo salt-key -L
 
+# de ping
+sudo salt '*' test.ping
 
 -------
 RSyslog
