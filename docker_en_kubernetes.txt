@@ -3,9 +3,11 @@
 
 
 #add the following lines in /etc/hosts file on all three systems,
+sudo nano /etc/hosts
 
-10.0.0.4	Ubuntu-master-all
-10.0.0.5	ubuntu-minion1
+
++10.0.0.4 Ubuntu-master-all
++10.0.0.5 ubuntu-minion1
 
 #STEP 2:
 #master: 

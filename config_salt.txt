@@ -50,13 +50,3 @@ sudo salt-key --accept='{hostname minion}'
 # test communicatie tussen master&minion
 sudo salt {hostname minion} test.ping
 sudo salt '*' test.ping
-
-
-
-
-
-
-
-
-
-
