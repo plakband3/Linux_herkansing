@@ -23,6 +23,14 @@ sudo salt-key -L
 # de ping
 sudo salt '*' test.ping
 
+
+#starten van service
+sudo systemctl start/stop/restart salt-master
+
+#accepteer salt minion
+sudo salt-key --accept='{hostname minion}'
+
+
 -------
 RSyslog
 -------

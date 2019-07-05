@@ -3,7 +3,7 @@
 
 #zowel master als client worden geinstalleerd
 
-sudo apt-get install rsyslog
+sudo apt-get install rsyslog 
 sudo systemctl status rsyslog 
 
 
