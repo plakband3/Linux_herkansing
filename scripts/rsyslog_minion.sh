@@ -103,7 +103,7 @@ sudo systemctl stop rsyslog
 sudo systemctl start rsyslog
 
 echo "Rsyslog is geconfigureerd" 
-echo "Bekijk logs vanaf de master op: /var/log/saved_logs.log
+echo "Bekijk logs vanaf de master op: /var/log/saved_logs.log"
 
 
 #END

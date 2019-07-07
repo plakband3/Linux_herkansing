@@ -1,9 +1,7 @@
 #!/bin/bash
 # script to install munin on a node
-# pain in the ass for the special notation ip address. 
+# pain in the ass for the special notation ip address.
 # no problem.
-
-# 
 
 echo "Voer aub ip address in van Munin Master. "
 read ip_address
@@ -15,7 +13,7 @@ D="$(cut -d'.' -f4 <<<$ip_address)"
 
 
 # install muning node
-sudo apt-get install -y munin-node
+sudo apt-get install munin-node -y
 
 # move old munin-node.conf to backup
 sudo mv /etc/munin/munin-node.conf /etc/munin/munin-node.conf_back
@@ -69,7 +67,6 @@ ignore_file \.pod$
 # network notation unless the perl module Net::CIDR is installed.  You
 # may repeat the allow line as many times as you'd like
 
-" 
 allow ^$A\.$B\.$C\.$D$
 allow ^::1$
 port 4949

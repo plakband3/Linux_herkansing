@@ -39,7 +39,6 @@ sudo mv /etc/munin/munin.conf /etc/munin/munin.conf_back
 LOCATION="/etc/munin/munin.conf"
 
 /bin/cat << EOM >$LOCATION
-
 #
 # MASTER
 # /etc/munin/munin.conf
@@ -158,8 +157,8 @@ includedir /etc/munin/munin-conf.d
     use_node_name yes
 
 [$hostname2]
-	address $ip_address2
-	use_node_name yes
+    address $ip_address2
+    use_node_name yes
 #
 # A more complex example of a host tree
 #
@@ -209,8 +208,8 @@ EOM
 # move old config file to backup
 sudo mv /etc/munin/apache24.conf /etc/munin/apache24.conf_back 
 
-#configuratie die klaar staat op git voor rsyslog kopieren naar /etc/rsyslog
-sudo cp /home/joostholwerda/git/linux-herkansing/munin_master_config/apache24.conf /etc/apache24.conf
+#configuratie die klaar staat op git voor rsyslog kopieren naar /etc/munin
+sudo cp /home/joostholwerda/git/linux-herkansing/munin_master_config/apache24.conf /etc/munin/apache24.conf
 
 #restart apache & munin services
 sudo service apache2 stop

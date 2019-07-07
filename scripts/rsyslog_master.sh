@@ -18,7 +18,7 @@ sudo systemctl stop rsyslog
 sudo systemctl start rsyslog
 
 #status voor gebruiker
-sudo systemctl status rsyslog
+#sudo systemctl status rsyslog
 
 
 echo "location stored logs: /var/log/saved_logs.log " 

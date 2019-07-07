@@ -14,7 +14,7 @@ variable in: munin config master
 		
 variable in: munin config minion:
 	+ 	allow ^52\.233\.160\.168$
-	+ 	allow ^::1$				#is deze echt nodig?
+	+ 	allow ^::1$				#is deze echt nodig? jup
 	+ 	port 4949
 				
 	
