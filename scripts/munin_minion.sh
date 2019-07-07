@@ -93,6 +93,5 @@ EOM
 
 sudo service munin-node stop
 sudo service munin-node start
-sudo service munin-node status
 
 echo "Munin-Node geinstalleerd"
