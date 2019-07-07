@@ -11,3 +11,8 @@ sudo apt -y install salt-api salt-cloud salt-master salt-minion salt-ssh salt-sy
 
 #firewall reasons
 sudo ufw allow proto tcp from any to any port 4505,4506
+
+sudo service salt-master stop
+sudo service salt-master start
+
+# END

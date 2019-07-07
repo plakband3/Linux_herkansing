@@ -1,10 +1,6 @@
 #!/bin/bash
 #rsyslog configuratie MASTER
 
-#refresh all
-sudo apt-get update
-sudo apt-get upgrade
-
 #installatie rsyslog
 sudo apt-get install rsyslog -y
 

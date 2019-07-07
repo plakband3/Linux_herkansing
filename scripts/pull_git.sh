@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#refresh all -get up to date
+sudo apt-get update
+sudo apt-get upgrade -y
+
 sudo mkdir /home/joostholwerda/git/linux-herkansing
 cd /home/joostholwerda/git/
 sudo git init linux-herkansing

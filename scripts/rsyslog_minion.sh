@@ -1,3 +1,24 @@
+#!/bin/bash
+
+# install rsyslog for minion
+# this requires IP logserver
+
+# variablen:
+# $ip_address
+
+echo "Tijd om Rsyslog client te installeren."
+echo "Voer aub IP address in van de logserver: "
+read ip_address
+
+#install rsyslog
+sudo apt-get install rsyslog -y
+
+# move old rsyslog.conf to backup
+sudo mv /etc/rsyslog.conf /etc/rsyslog.conf_back
+
+LOCATION="/etc/rsyslog.conf"
+
+/bin/cat << EOM >$LOCATION
 # MINION
 #  /etc/rsyslog.conf    Configuration file for rsyslog.
 #
@@ -72,3 +93,17 @@ $ActionQueueMaxDiskSpace 1g
 $ActionQueueSaveOnShutdown on
 $ActionQueueType LinkedList
 $ActionResumeRetryCount -1
+
+EOM
+
+
+#restart rsyslog services
+
+sudo systemctl stop rsyslog
+sudo systemctl start rsyslog
+
+echo "Rsyslog is geconfigureerd" 
+echo "Bekijk logs vanaf de master op: /var/log/saved_logs.log
+
+
+#END

@@ -36,7 +36,7 @@ sudo apt-get install munin munin-node munin-plugins-extra -y
 # move old munin.conf to backup
 sudo mv /etc/munin/munin.conf /etc/munin/munin.conf_back
 
-LOCATION="/etc/munin.conf"
+LOCATION="/etc/munin/munin.conf"
 
 /bin/cat << EOM >$LOCATION
 
