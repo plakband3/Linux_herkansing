@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir /home/joostholwerda/git/linux-herkansing
+sudo mkdir /home/joostholwerda/git/linux-herkansing
 cd /home/joostholwerda/git/
 sudo git init linux-herkansing
 cd /home/joostholwerda/git/linux-herkansing

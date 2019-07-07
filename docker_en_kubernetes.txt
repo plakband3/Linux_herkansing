@@ -92,6 +92,10 @@ kubectl get nodes
 
 
 
+# docker with saltstack
+# https://opsnotice.xyz/docker-with-saltstack/
+# created docker.sls for: /srv/salt/docker.sls
+
 
 
 

@@ -1,4 +1,44 @@
-#  TESTING TO REMOVE PLSSSSS /home/joostholwerda/testing/munin.conf
+#!/bin/bash
+# install munin on the master
+
+# using variables:
+# $ip_address1
+# $hostname1
+# $ip_address2
+# $hostname2
+# $self_hostname
+
+
+echo "Tijd om munin op de master te installeren"
+
+echo "Voer aub eigen hostname in: "
+read self_hostname
+echo "Voer aub ip address minion 1 in: "
+read ip_address1
+echo "Voer nu de hostname van minion 1 in: "
+read hostname1
+echo "Voer aub ip address minion 2 in: "
+read ip_address2
+echo "Voer nu de hostname van minion 2 in: "
+read hostname2
+
+
+
+# install the dependency packages
+sudo apt-get install apache2 libcgi-fast-perl libapache2-mod-fcgid -y
+
+# enable the fcgid module in apache
+sudo a2enmod fcgid
+
+# install munin and its packages
+sudo apt-get install munin munin-node munin-plugins-extra -y
+
+# move old munin.conf to backup
+sudo mv /etc/munin/munin.conf /etc/munin/munin.conf_back
+
+LOCATION="/etc/munin.conf"
+
+/bin/cat << EOM >$LOCATION
 
 #
 # MASTER
@@ -109,7 +149,7 @@ includedir /etc/munin/munin-conf.d
 #contact.nagios.command /usr/bin/send_nsca nagios.host.comm -c /etc/nsca.conf
 
 # a simple host tree
-[$hostname]
+[$self_hostname]
     address 127.0.0.1
     use_node_name yes
 
@@ -164,3 +204,19 @@ includedir /etc/munin/munin-conf.d
 # [foo.com;]
 #       node_order Totals fii.foo.com fay.foo.com
 #
+EOM
+
+# move old config file to backup
+sudo mv /etc/munin/apache24.conf /etc/munin/apache24.conf_back 
+
+#configuratie die klaar staat op git voor rsyslog kopieren naar /etc/rsyslog
+sudo cp /home/joostholwerda/git/linux-herkansing/munin_master_config/apache24.conf /etc/apache24.conf
+
+#restart apache & munin services
+sudo service apache2 stop
+sudo service apache2 start
+sudo service munin-node stop
+sudo service munin-node start
+
+
+# END
